@@ -1,10 +1,8 @@
-"use client";
 
 import React from "react";
-// import SectionHeading from "./section-heading";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
-import { features } from "@/lib/data";
+import { feature } from "@/lib/data";
 
 const fadeInAnimationVariants = {
   initial: {
@@ -21,17 +19,17 @@ const fadeInAnimationVariants = {
 };
 
 export default function Benefit() {
-  const { ref } = useSectionInView("Fitur");
+  const { ref } = useSectionInView("Features",0.5);
 
   return (
     <section
-      id="skills"
+      id="features"
       ref={ref}
-      className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
+      className="mb-24 max-w-[53rem] scroll-mt-2 text-center sm:mb-0"
     >
-      <div className="mt-20 text-[3rem] font-normal">Benefits</div>
-      <div className="grid grid-cols-3 gap-4 mt-10">
-        {features.map((e, index) => {
+      <div className="mt-20 text-[3rem] font-normal font-gray-100 text-slate-700">Fitur Berkelas</div>
+      <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+        {feature.map((e, index) => {
           return (
             <motion.div
             key={index}
@@ -39,15 +37,14 @@ export default function Benefit() {
               initial="initial"
               whileInView="animate"
               viewport={{
-                once: false,
+                once: true,
               }}
               custom={index}
-              className="flex flex-col bg-white borderBlack rounded-xl px-5 py-3"
+              className="flex flex-col bg-stone-50 borderBlack rounded-xl p-8 items-center gap-4 shadow-xl"
             >
-              <span>{e}</span>
-              <span>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Temporibus, eum quidem.
+              <span className="text-3xl">{e.icon}</span>
+              <span className="font-thin">
+                {e.title}
               </span>
             </motion.div>
           );
